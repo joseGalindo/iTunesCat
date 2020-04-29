@@ -1,24 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="atr-JE-V5W">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="VBk-kT-E3V">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="d8k-Yp-0St" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="75m-Y6-sVk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QLK-Pm-wvf"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="2QB-KD-uep"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UZi-5R-8nm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="642" y="267"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="01y-43-uyN">
+            <objects>
+                <viewController id="2LT-Tq-JaH" customClass="ViewController" customModule="iTunesCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="722-zS-ctA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="1bC-mB-pLD">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SGB-Rf-t8W"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Ov-Cs-Jej">
+                                <rect key="frame" x="0.0" y="108" width="414" height="705"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gin-0w-gbJ">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yEg-Zf-dj3">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="G4n-WT-Qwd">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="D7b-FO-Wim" firstAttribute="trailing" secondItem="8Ov-Cs-Jej" secondAttribute="trailing" id="HuD-Wo-amR"/>
+                            <constraint firstItem="8Ov-Cs-Jej" firstAttribute="leading" secondItem="D7b-FO-Wim" secondAttribute="leading" id="Uf7-sD-0Ep"/>
+                            <constraint firstItem="1bC-mB-pLD" firstAttribute="leading" secondItem="D7b-FO-Wim" secondAttribute="leading" id="VuK-Ps-yhe"/>
+                            <constraint firstItem="D7b-FO-Wim" firstAttribute="bottom" secondItem="8Ov-Cs-Jej" secondAttribute="bottom" id="WaE-iC-e3d"/>
+                            <constraint firstItem="8Ov-Cs-Jej" firstAttribute="top" secondItem="1bC-mB-pLD" secondAttribute="bottom" id="mVE-TO-YbT"/>
+                            <constraint firstItem="1bC-mB-pLD" firstAttribute="trailing" secondItem="D7b-FO-Wim" secondAttribute="trailing" id="sSP-R6-9tr"/>
+                            <constraint firstItem="1bC-mB-pLD" firstAttribute="top" secondItem="D7b-FO-Wim" secondAttribute="top" constant="20" id="tFz-r3-64t"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D7b-FO-Wim"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="Spe-f9-j0h"/>
+                    <connections>
+                        <outlet property="mCollectionView" destination="8Ov-Cs-Jej" id="6aN-7Y-vLm"/>
+                        <outlet property="mSearchBar" destination="1bC-mB-pLD" id="Oef-de-9Ql"/>
+                        <segue destination="JfQ-Ah-G3p" kind="show" identifier="showPreview" id="NNY-Uj-WBk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Va4-6n-n2H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="642" y="-382"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yd6-40-KGG">
+            <objects>
+                <viewController id="JfQ-Ah-G3p" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y1k-ot-DyN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gc3-NZ-agQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HiQ-q2-hrO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfZ-X2-FL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="-382"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="D0J-dz-ygO">
+            <objects>
+                <tabBarController id="atr-JE-V5W" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NzO-pr-nqo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2LT-Tq-JaH" kind="relationship" relationship="viewControllers" id="ClG-72-pNf"/>
+                        <segue destination="d8k-Yp-0St" kind="relationship" relationship="viewControllers" id="KJe-fK-gS5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpi-SQ-hp4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-277" y="-58"/>
         </scene>
     </scenes>
 </document>
