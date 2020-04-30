@@ -9,19 +9,19 @@
 import UIKit
 import ObjectMapper
 
-enum MEDIA_TYPE {
-    case BOOK
-    case ALBUM
-    case COACHED_AUDIO
-    case MUSIC_VIDEO
-    case ARTIST
-    case SONG
-    case FEATURE_MOVIE
-    case TV_EPISODE
-    case SOFTWARE_PACKAGE
-    case PODCAST_EPISODE
-    case PDF_PODCAST
-    case INTERACTIVE_BOOKLET
+enum MEDIA_TYPE : String {
+    case BOOK = "book"
+    case ALBUM = "album"
+    case COACHED_AUDIO = "coached-audio"
+    case MUSIC_VIDEO = "music-video"
+    case ARTIST = "artist"
+    case SONG = "song"
+    case FEATURE_MOVIE = "feature-movie"
+    case TV_EPISODE = "tv-episode"
+    case SOFTWARE_PACKAGE = "software-package"
+    case PODCAST_EPISODE = "podcast-episode"
+    case PDF_PODCAST = "pdf-podcast"
+    case INTERACTIVE_BOOKLET = "interactive-booklet"
 }
 
 class Catalog: Entity, Mappable {
@@ -66,11 +66,68 @@ class Catalog: Entity, Mappable {
     var isStreamable: Bool = false
     var hasITunesExtras: Bool = false
     
+    //
+    var mediaType : MEDIA_TYPE!
+    
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-        
+        wrapperType <- map ["wrapperType"]
+        kind        <- map ["kind"]
+        artistId    <- map["artistId"]
+        collectionId <- map["collectionId"]
+        trackId      <- map["trackId"]
+        artistName   <- map["artistName"]
+        collectionName  <- map["collectionName"]
+        trackName       <- map["trackName"]
+        collectionCensoredName <- map["collectionCensoredName"]
+        trackCensoredName <- map["trackCensoredName"]
+        artistViewUrl     <- map["artistViewUrl"]
+        collectionViewUrl <- map["collectionViewUrl"]
+        trackViewUrl      <- map["trackViewUrl"]
+        previewUrl        <- map["previewUrl"]
+        artworkUrl30      <- map["artworkUrl30"]
+        artworkUrl60      <- map["artworkUrl60"]
+        artworkUrl100     <- map["artworkUrl100"]
+        collectionPrice   <- map["collectionPrice"]
+        trackPrice        <- map["trackPrice"]
+        trackRentalPrice  <- map["trackRentalPrice"]
+        collectionHdPrice <- map["collectionHdPrice"]
+        trackHdPrice      <- map["trackHdPrice"]
+        trackHdRentalPrice <- map["trackHdRentalPrice"]
+        releaseDate        <- map["releaseDate"] // yyyy-MM-ddTHH:mm:ssZ
+        collectionExplicitness <- map["collectionExplicitness"]
+        trackExplicitness   <- map["trackExplicitness"]
+        discCount           <- map["discCount"]
+        discNumber          <- map["discNumber"]
+        trackCount          <- map["trackCount"]
+        trackNumber         <- map["trackNumber"]
+        trackTimeMillis     <- map["trackTimeMillis"]
+        country             <- map["country"]
+        currency            <- map["currency"]
+        primaryGenreName    <- map["primaryGenreName"]
+        contentAdvisoryRating <- map["contentAdvisoryRating"]
+        shortDescription     <- map["shortDescription"]
+        longDescription      <- map["longDescription"]
+        isStreamable         <- map["isStreamable"]
+        hasITunesExtras      <- map["hasITunesExtras"]
+        self.setMediaType()
     }
     
+    
+    private func setMediaType() {
+        if kind == "song" { self.mediaType = .SONG }
+        if kind == "book" { self.mediaType = .BOOK }
+        if kind == "album" { self.mediaType = .ALBUM }
+        if kind == "coached-audio" { self.mediaType = .COACHED_AUDIO }
+        if kind == "feature-movie" { self.mediaType = .FEATURE_MOVIE }
+        if kind == "interactive-booklet" { self.mediaType = .INTERACTIVE_BOOKLET }
+        if kind == "music-video" { self.mediaType = .MUSIC_VIDEO }
+        if kind == "pdf podcast" { self.mediaType = .PDF_PODCAST }
+        if kind == "podcast-episode" { self.mediaType = .PODCAST_EPISODE }
+        if kind == "software-package" { self.mediaType = .SOFTWARE_PACKAGE }
+        if kind == "tv-episode" { self.mediaType = .TV_EPISODE }
+        if kind == "artist" { self.mediaType = .ARTIST }
+    }
 }

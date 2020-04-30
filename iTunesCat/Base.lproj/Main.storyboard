@@ -42,7 +42,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Ov-Cs-Jej">
                                 <rect key="frame" x="0.0" y="108" width="414" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gin-0w-gbJ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gin-0w-gbJ">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -83,17 +83,36 @@
             </objects>
             <point key="canvasLocation" x="642" y="-382"/>
         </scene>
-        <!--View Controller-->
+        <!--Preview View Controller-->
         <scene sceneID="yd6-40-KGG">
             <objects>
-                <viewController id="JfQ-Ah-G3p" sceneMemberID="viewController">
+                <viewController id="JfQ-Ah-G3p" customClass="PreviewViewController" customModule="iTunesCat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y1k-ot-DyN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSU-p8-HTZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gc3-NZ-agQ" firstAttribute="bottom" secondItem="VSU-p8-HTZ" secondAttribute="bottom" id="RzK-kx-rHs"/>
+                            <constraint firstItem="VSU-p8-HTZ" firstAttribute="leading" secondItem="gc3-NZ-agQ" secondAttribute="leading" id="SmK-bS-GIn"/>
+                            <constraint firstItem="gc3-NZ-agQ" firstAttribute="trailing" secondItem="VSU-p8-HTZ" secondAttribute="trailing" id="aOK-Sb-KGO"/>
+                            <constraint firstItem="VSU-p8-HTZ" firstAttribute="top" secondItem="gc3-NZ-agQ" secondAttribute="top" id="ffg-Yb-qwL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gc3-NZ-agQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="HiQ-q2-hrO"/>
+                    <connections>
+                        <outlet property="mWebView" destination="VSU-p8-HTZ" id="xTI-9R-cTZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfZ-X2-FL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
