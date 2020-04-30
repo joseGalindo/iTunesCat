@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class ViewController: UIViewController {
     
@@ -23,6 +24,8 @@ class ViewController: UIViewController {
         
         mSearchBar.delegate = self
         
+        mCollectionView.emptyDataSetSource = self
+        
         // NIB
         let songNib = UINib.init(nibName: "CVCSong", bundle: nil)
         let videoNib = UINib.init(nibName: "CVCVideo", bundle: nil)
@@ -38,9 +41,14 @@ class ViewController: UIViewController {
     
     private func createSections() {
         sections.removeAll()
-        catalogue.forEach { (key, val) in
+        catalogue.sorted { $0.0 < $1.0 }.forEach { (key, val) in
             sections.append(key)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let previewvc = segue.destination as! PreviewViewController
+        previewvc.previewUrl = (sender as! Catalog).previewUrl
     }
 }
 
@@ -87,10 +95,9 @@ extension ViewController : UICollectionViewDataSource {
 
 extension ViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showPreview", sender: self)
+        self.performSegue(withIdentifier: "showPreview", sender: catalogue[sections[indexPath.section]]![indexPath.row])
     }
 }
-
 
 extension ViewController :  UISearchBarDelegate {
     
@@ -126,5 +133,16 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
             cellHeigth = 60;
         }
         return CGSize(width: cellWidth, height: cellHeigth)
+    }
+}
+
+
+//
+extension ViewController : DZNEmptyDataSetSource {
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let message = "Please search something in iTunes collection"
+        let atts = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]
+        return NSAttributedString.init(string: message, attributes: atts)
     }
 }

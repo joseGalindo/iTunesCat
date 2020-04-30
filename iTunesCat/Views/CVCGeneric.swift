@@ -15,6 +15,7 @@ class CVCGeneric: UICollectionViewCell {
     
     @IBOutlet weak var mDisplayImage: UIImageView!
     @IBOutlet weak var mDisplayName: UILabel!
+    @IBOutlet weak var genre: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,9 +23,11 @@ class CVCGeneric: UICollectionViewCell {
     }
 
     func assingCatalog(_ catalogue : Catalog) {
-        guard let murl = URL(string: catalogue.artworkUrl30 ?? "") else {
+        guard let murl = URL(string: catalogue.artworkUrl60 ?? "") else {
             return
         }
+        mDisplayName.text = catalogue.collectionName
+        genre.text = catalogue.artistName
         Nuke.loadImage(with: murl, into: mDisplayImage)
     }
     

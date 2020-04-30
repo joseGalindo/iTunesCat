@@ -12,11 +12,12 @@ import Nuke
 class CVCVideo: UICollectionViewCell {
 
     static let REUSE_IDENTIFIER = String(describing: CVCVideo.self)
-    static let CELL_HEIGHT = 160
+    static let CELL_HEIGHT = 180
     static let CELL_WIDTH = 150
     
     @IBOutlet weak var mDisplayImage: UIImageView!
     @IBOutlet weak var mDisplayName: UILabel!
+    @IBOutlet weak var mDisplayGenre: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,8 @@ class CVCVideo: UICollectionViewCell {
         guard let murl = URL(string: catalogue.artworkUrl100 ?? "") else {
             return
         }
+        mDisplayName.text = catalogue.trackName
+        mDisplayGenre.text = catalogue.primaryGenreName
         Nuke.loadImage(with: murl, into: mDisplayImage)
     }
 

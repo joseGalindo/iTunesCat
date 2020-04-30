@@ -20,7 +20,8 @@ class PreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let murl = URL(string: "https://video-ssl.itunes.apple.com/itunes-assets/Video122/v4/5c/6f/0b/5c6f0b63-8904-de5f-d38e-3ffaba1afed8/mzvf_7416392252910735463.640x474.h264lc.U.p.m4v")!
+//        let murl = URL(string: "https://video-ssl.itunes.apple.com/itunes-assets/Video122/v4/5c/6f/0b/5c6f0b63-8904-de5f-d38e-3ffaba1afed8/mzvf_7416392252910735463.640x474.h264lc.U.p.m4v")!
+        let murl = URL(string: previewUrl!)!
         let request = URLRequest.init(url: murl)
         mWebView.load(request)
     }
