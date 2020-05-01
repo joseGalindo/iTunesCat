@@ -22,12 +22,12 @@
                             <constraint firstAttribute="width" constant="60" id="iEn-kX-Fq5"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-lZ-sEN">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-lZ-sEN">
                         <rect key="frame" x="150" y="10" width="30" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="udQ-hi-l78"/>
                         </constraints>
-                        <state key="normal" title="Play"/>
+                        <state key="normal" image="heart.fill" catalog="system"/>
                         <connections>
                             <action selector="playPreview:" destination="gTV-IL-0wX" eventType="touchUpInside" id="L05-vT-NR1"/>
                         </connections>
@@ -88,4 +88,7 @@
             <point key="canvasLocation" x="139" y="111"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+    </resources>
 </document>

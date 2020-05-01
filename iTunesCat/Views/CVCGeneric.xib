@@ -16,15 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-Fc-iHv">
-                        <rect key="frame" x="55" y="5" width="235" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="dFv-IG-BZh"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="vnh-3Z-254">
+                        <rect key="frame" x="55" y="5" width="195" height="39"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-Fc-iHv">
+                                <rect key="frame" x="0.0" y="0.0" width="195" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91r-mI-Z5O">
+                                <rect key="frame" x="0.0" y="21" width="195" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5PE-FH-TKx">
                         <rect key="frame" x="5" y="5" width="40" height="40"/>
                         <constraints>
@@ -32,26 +40,28 @@
                             <constraint firstAttribute="height" constant="40" id="sVZ-5R-74R"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91r-mI-Z5O">
-                        <rect key="frame" x="55" y="27" width="235" height="17"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ql-Ba-H47">
+                        <rect key="frame" x="260" y="0.0" width="30" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="Nre-SQ-ns7"/>
+                            <constraint firstAttribute="width" constant="30" id="Ddt-Gz-pbi"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <state key="normal" image="heart.fill" catalog="system"/>
+                        <connections>
+                            <action selector="addFav:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iqL-g6-jgg"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="8E0-Fc-iHv" firstAttribute="leading" secondItem="5PE-FH-TKx" secondAttribute="trailing" constant="10" id="ICH-cb-KLs"/>
-                <constraint firstAttribute="trailing" secondItem="91r-mI-Z5O" secondAttribute="trailing" constant="10" id="Ond-vf-ZW8"/>
+                <constraint firstItem="vnh-3Z-254" firstAttribute="leading" secondItem="5PE-FH-TKx" secondAttribute="trailing" constant="10" id="D1b-vK-TKC"/>
+                <constraint firstAttribute="bottom" secondItem="vnh-3Z-254" secondAttribute="bottom" constant="6" id="D8O-eY-Jul"/>
+                <constraint firstItem="4Ql-Ba-H47" firstAttribute="leading" secondItem="vnh-3Z-254" secondAttribute="trailing" constant="10" id="Q1z-Ht-Ps2"/>
+                <constraint firstItem="4Ql-Ba-H47" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XUO-cB-DcB"/>
+                <constraint firstAttribute="bottom" secondItem="4Ql-Ba-H47" secondAttribute="bottom" id="Xum-Kq-Wyq"/>
+                <constraint firstAttribute="trailing" secondItem="4Ql-Ba-H47" secondAttribute="trailing" constant="10" id="ci9-O2-xX2"/>
                 <constraint firstItem="5PE-FH-TKx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="cmX-vK-XRV"/>
-                <constraint firstAttribute="trailing" secondItem="8E0-Fc-iHv" secondAttribute="trailing" constant="10" id="gCI-Nt-J5I"/>
-                <constraint firstItem="8E0-Fc-iHv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="hxr-HX-WIY"/>
-                <constraint firstItem="91r-mI-Z5O" firstAttribute="top" secondItem="8E0-Fc-iHv" secondAttribute="bottom" constant="5" id="jDj-xc-yYy"/>
                 <constraint firstItem="5PE-FH-TKx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="nYk-CY-qSZ"/>
-                <constraint firstItem="91r-mI-Z5O" firstAttribute="leading" secondItem="5PE-FH-TKx" secondAttribute="trailing" constant="10" id="qxF-0z-hbp"/>
+                <constraint firstItem="vnh-3Z-254" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="nfu-9j-aDe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
@@ -62,4 +72,7 @@
             <point key="canvasLocation" x="26" y="14"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+    </resources>
 </document>

@@ -8,8 +8,9 @@
 
 import UIKit
 import DZNEmptyDataSet
+import JGProgressHUD
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
     
     // UI
     @IBOutlet weak var mSearchBar: UISearchBar!
@@ -50,6 +51,25 @@ class ViewController: UIViewController {
         let previewvc = segue.destination as! PreviewViewController
         previewvc.previewUrl = (sender as! Catalog).previewUrl
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading"
+        hud.show(in: self.view, animated: true)
+        
+        Api.shared.makeSearch(searchBar.text!, onSuccess: { (dictionary) in
+            self.catalogue.removeAll()
+            self.catalogue = dictionary as! Dictionary<String, [Catalog]>
+            self.createSections()
+            self.mCollectionView.reloadData()
+            hud.dismiss()
+        }) { (onError) in
+            hud.dismiss()
+            self.showError("An error ocurred, please try again")
+        }
+        self.view.endEditing(true)
+    }
 }
 
 extension ViewController : UICollectionViewDataSource {
@@ -75,21 +95,22 @@ extension ViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell : BaseCVC
         let mcatalog = catalogue[sections[indexPath.section]]![indexPath.row]
+        
         switch mcatalog.mediaType {
         case .SONG:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCSong.REUSE_IDENTIFIER, for: indexPath) as! CVCSong
-            cell.assingCatalog(mcatalog)
-            return cell
+           cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCSong.REUSE_IDENTIFIER, for: indexPath) as! CVCSong
+            break
         case .FEATURE_MOVIE, .TV_EPISODE:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCVideo.REUSE_IDENTIFIER, for: indexPath) as! CVCVideo
-            cell.assingCatalog(mcatalog)
-            return cell
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCVideo.REUSE_IDENTIFIER, for: indexPath) as! CVCVideo
+            break
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCGeneric.REUSE_IDENTIFIER, for: indexPath) as! CVCGeneric
-            cell.assingCatalog(mcatalog)
-            return cell
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCGeneric.REUSE_IDENTIFIER, for: indexPath) as! CVCGeneric
         }
+        cell.assingCatalog(mcatalog)
+        cell.father = self
+        return cell
     }
 }
 
@@ -97,22 +118,6 @@ extension ViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showPreview", sender: catalogue[sections[indexPath.section]]![indexPath.row])
     }
-}
-
-extension ViewController :  UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        Api.shared.makeSearch(searchBar.text!, onSuccess: { (dictionary) in
-            self.catalogue.removeAll()
-            self.catalogue = dictionary as! Dictionary<String, [Catalog]>
-            self.createSections()
-            self.mCollectionView.reloadData()
-        }) { (onError) in
-            
-        }
-        self.view.endEditing(true)
-    }
-    
 }
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
@@ -135,7 +140,6 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellHeigth)
     }
 }
-
 
 //
 extension ViewController : DZNEmptyDataSetSource {

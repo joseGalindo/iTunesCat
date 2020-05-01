@@ -8,8 +8,9 @@
 
 import UIKit
 import Nuke
+import Toast_Swift
 
-class CVCGeneric: UICollectionViewCell {
+class CVCGeneric: BaseCVC {
 
     static let REUSE_IDENTIFIER = String(describing: CVCGeneric.self)
     
@@ -17,18 +18,23 @@ class CVCGeneric: UICollectionViewCell {
     @IBOutlet weak var mDisplayName: UILabel!
     @IBOutlet weak var genre: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func assingCatalog(_ catalogue : Catalog) {
+    override func assingCatalog(_ catalogue : Catalog) {
+        super.assingCatalog(catalogue)
+        mDisplayName.text = catalogue.collectionName
+        genre.text = catalogue.artistName
         guard let murl = URL(string: catalogue.artworkUrl60 ?? "") else {
             return
         }
-        mDisplayName.text = catalogue.collectionName
-        genre.text = catalogue.artistName
         Nuke.loadImage(with: murl, into: mDisplayImage)
     }
     
+    @IBAction func addFav(_ sender: Any) {
+        super.addFavorite()
+    }
 }

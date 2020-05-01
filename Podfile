@@ -12,5 +12,6 @@ target 'iTunesCat' do
   pod 'JGProgressHUD'
   pod 'DZNEmptyDataSet'
   pod 'RealmSwift'
+  pod 'Toast-Swift', '~> 5.0.1'
 
 end

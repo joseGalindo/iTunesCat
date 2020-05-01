@@ -23,28 +23,41 @@
                             <constraint firstAttribute="width" constant="100" id="vH9-a3-qrc"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-7e-0RM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-7e-0RM">
                         <rect key="frame" x="10" y="118" width="130" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ud3-b8-GCf">
-                        <rect key="frame" x="10" y="148.5" width="130" height="21"/>
+                        <rect key="frame" x="10" y="141.5" width="130" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Q1m-D5-bGo"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-Il-dMA">
+                        <rect key="frame" x="110" y="0.0" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="dZ9-1k-8Px"/>
+                            <constraint firstAttribute="width" constant="40" id="m43-MZ-su4"/>
+                        </constraints>
+                        <state key="normal" image="heart.fill" catalog="system"/>
+                        <connections>
+                            <action selector="addFav:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0sI-80-HyA"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="wgN-dp-yod" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="0Eo-gE-moD"/>
                 <constraint firstItem="Ud3-b8-GCf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="7ik-wm-LhC"/>
                 <constraint firstItem="wgN-dp-yod" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="FJe-eK-LCb"/>
-                <constraint firstItem="Ud3-b8-GCf" firstAttribute="top" secondItem="5WX-7e-0RM" secondAttribute="bottom" constant="10" id="Sy9-g3-hA6"/>
+                <constraint firstItem="DSg-Il-dMA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Kge-b1-wdp"/>
+                <constraint firstAttribute="trailing" secondItem="DSg-Il-dMA" secondAttribute="trailing" id="Sgd-lD-Z3b"/>
+                <constraint firstItem="Ud3-b8-GCf" firstAttribute="top" secondItem="5WX-7e-0RM" secondAttribute="bottom" constant="3" id="Sy9-g3-hA6"/>
                 <constraint firstItem="5WX-7e-0RM" firstAttribute="top" secondItem="wgN-dp-yod" secondAttribute="bottom" constant="8" id="WUp-SM-8lA"/>
                 <constraint firstItem="5WX-7e-0RM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="ZpT-hv-vGi"/>
                 <constraint firstAttribute="trailing" secondItem="5WX-7e-0RM" secondAttribute="trailing" constant="10" id="n17-eL-2jA"/>
@@ -59,4 +72,7 @@
             <point key="canvasLocation" x="139" y="83"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+    </resources>
 </document>

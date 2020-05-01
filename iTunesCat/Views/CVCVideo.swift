@@ -8,8 +8,9 @@
 
 import UIKit
 import Nuke
+import Toast_Swift
 
-class CVCVideo: UICollectionViewCell {
+class CVCVideo: BaseCVC {
 
     static let REUSE_IDENTIFIER = String(describing: CVCVideo.self)
     static let CELL_HEIGHT = 180
@@ -24,7 +25,8 @@ class CVCVideo: UICollectionViewCell {
         // Initialization code
     }
     
-    func assingCatalog(_ catalogue : Catalog) {
+    override func assingCatalog(_ catalogue : Catalog) {
+        super.assingCatalog(catalogue)
         guard let murl = URL(string: catalogue.artworkUrl100 ?? "") else {
             return
         }
@@ -33,4 +35,7 @@ class CVCVideo: UICollectionViewCell {
         Nuke.loadImage(with: murl, into: mDisplayImage)
     }
 
+    @IBAction func addFav(_ sender: Any) {
+        super.addFavorite()
+    }
 }

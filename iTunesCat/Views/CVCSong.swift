@@ -8,8 +8,9 @@
 
 import UIKit
 import Nuke
+import Toast_Swift
 
-class CVCSong: UICollectionViewCell {
+class CVCSong: BaseCVC {
 
     static let REUSE_IDENTIFIER = String(describing: CVCSong.self)
     static let CELL_HEIGHT = 80
@@ -21,15 +22,13 @@ class CVCSong: UICollectionViewCell {
     
     let cell_type = MEDIA_TYPE.SONG
     
-    var mcat : Catalog!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func assingCatalog(_ catalogue : Catalog) {
-        mcat = catalogue
+    override func assingCatalog(_ catalogue : Catalog) {
+        super.assingCatalog(catalogue)
         guard let murl = URL(string: catalogue.artworkUrl60 ?? "") else {
             return
         }
@@ -40,7 +39,7 @@ class CVCSong: UICollectionViewCell {
     }
     
     @IBAction func playPreview(_ sender: Any) {
-        ManageDatabase.sharedInstance.addCatalogue(mcat)
+        super.addFavorite()
     }
     
     
