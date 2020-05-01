@@ -13,7 +13,8 @@ import Nuke
 class FavoritesViewController: UIViewController {
 
     @IBOutlet weak var mTableView: UITableView!
-    
+    private let refreshControl = UIRefreshControl()
+
     var favorites : [EntitySaved] = [EntitySaved]()
     
     override func viewDidLoad() {
@@ -26,8 +27,16 @@ class FavoritesViewController: UIViewController {
         mTableView.emptyDataSetSource = self
         mTableView.tableFooterView = UIView()
         
+        mTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(getFavorites), for: .valueChanged)
+        
+        getFavorites()
+    }
+    
+    @objc func getFavorites() {
         favorites = ManageDatabase.sharedInstance.getAllFavorites()
         mTableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
 
 
