@@ -19,6 +19,10 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Nib
+        let mNib = UINib.init(nibName: "TVCFavorite", bundle: nil)
+        mTableView.register(mNib, forCellReuseIdentifier: TVCFavorite.REUSE_IDENTIFIER)
+        
         mTableView.emptyDataSetSource = self
         mTableView.tableFooterView = UIView()
         
@@ -35,7 +39,9 @@ extension FavoritesViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell.init()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TVCFavorite.REUSE_IDENTIFIER, for: indexPath) as! TVCFavorite
+        cell.configureCell(favorites[indexPath.row])
+        return cell
     }
 }
 
