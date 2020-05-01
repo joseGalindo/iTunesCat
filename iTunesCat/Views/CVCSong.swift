@@ -21,13 +21,16 @@ class CVCSong: UICollectionViewCell {
     
     let cell_type = MEDIA_TYPE.SONG
     
+    var mcat : Catalog!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     func assingCatalog(_ catalogue : Catalog) {
-        guard let murl = URL(string: catalogue.artworkUrl30 ?? "") else {
+        mcat = catalogue
+        guard let murl = URL(string: catalogue.artworkUrl60 ?? "") else {
             return
         }
         Nuke.loadImage(with: murl, into: mDisplayImage)
@@ -37,6 +40,7 @@ class CVCSong: UICollectionViewCell {
     }
     
     @IBAction func playPreview(_ sender: Any) {
+        ManageDatabase.sharedInstance.addCatalogue(mcat)
     }
     
     

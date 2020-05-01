@@ -8,17 +8,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="VBk-kT-E3V">
             <objects>
-                <viewController id="d8k-Yp-0St" sceneMemberID="viewController">
+                <viewController id="d8k-Yp-0St" customClass="FavoritesViewController" customModule="iTunesCat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="75m-Y6-sVk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ke5-xJ-YYh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QLK-Pm-wvf" firstAttribute="bottom" secondItem="ke5-xJ-YYh" secondAttribute="bottom" id="7Y8-RD-88f"/>
+                            <constraint firstItem="QLK-Pm-wvf" firstAttribute="trailing" secondItem="ke5-xJ-YYh" secondAttribute="trailing" id="7aD-xr-H5J"/>
+                            <constraint firstItem="ke5-xJ-YYh" firstAttribute="top" secondItem="QLK-Pm-wvf" secondAttribute="top" id="l1K-bf-gLR"/>
+                            <constraint firstItem="ke5-xJ-YYh" firstAttribute="leading" secondItem="QLK-Pm-wvf" secondAttribute="leading" id="oV4-5v-qZe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QLK-Pm-wvf"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="2QB-KD-uep"/>
+                    <connections>
+                        <outlet property="mTableView" destination="ke5-xJ-YYh" id="ThK-Jb-j93"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZi-5R-8nm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

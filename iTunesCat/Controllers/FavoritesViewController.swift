@@ -7,24 +7,42 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
+import Nuke
 
 class FavoritesViewController: UIViewController {
 
+    @IBOutlet weak var mTableView: UITableView!
+    
+    var favorites : [EntitySaved] = [EntitySaved]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        mTableView.emptyDataSetSource = self
+        mTableView.tableFooterView = UIView()
+        
+        favorites = ManageDatabase.sharedInstance.getAllFavorites()
+        mTableView.reloadData()
+    }
+
+
+}
+
+extension FavoritesViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favorites.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell.init()
     }
-    */
+}
 
+extension FavoritesViewController : DZNEmptyDataSetSource {
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let message = "There's no favorites saved"
+        let atts = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]
+        return NSAttributedString.init(string: message, attributes: atts)
+    }
 }

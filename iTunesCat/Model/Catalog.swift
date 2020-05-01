@@ -130,4 +130,38 @@ class Catalog: Entity, Mappable {
         if kind == "tv-episode" { self.mediaType = .TV_EPISODE }
         if kind == "artist" { self.mediaType = .ARTIST }
     }
+    
+    func createSaveObject() -> EntitySaved {
+        let entity = EntitySaved()
+        entity.wrapperType = wrapperType
+        entity.kind = kind
+        entity.artistId = artistId
+        entity.collectionId = collectionId
+        entity.trackId = trackId
+        entity.artistName = artistName
+        entity.collectionName = collectionName
+        entity.trackName = trackName
+        entity.collectionCensoredName = collectionCensoredName
+        entity.trackCensoredName = trackCensoredName
+        entity.artistViewUrl = artistViewUrl
+        entity.collectionViewUrl = collectionViewUrl
+        entity.trackViewUrl = trackViewUrl
+        entity.previewUrl = previewUrl
+        entity.artworkUrl30 = artworkUrl30
+        entity.artworkUrl60 = artworkUrl60
+        entity.artworkUrl100 = artworkUrl100
+        entity.collectionPrice = collectionPrice ?? 0
+        entity.trackPrice = trackPrice ?? 0
+        entity.releaseDate = releaseDate
+        entity.collectionExplicitness = collectionExplicitness
+        entity.trackExplicitness = trackExplicitness
+        entity.discCount = discCount
+        entity.discNumber = discNumber
+        entity.trackCount = trackCount
+        entity.trackTimeMillis = trackTimeMillis
+        entity.country = country
+        entity.currency = currency
+        entity.primaryGenreName = primaryGenreName
+        return entity
+    }
 }
