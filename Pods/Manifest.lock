@@ -1,0 +1,51 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - DZNEmptyDataSet (1.8.1)
+  - JGProgressHUD (2.1)
+  - Nuke (8.4.1)
+  - ObjectMapper (3.5.2)
+  - Realm (4.4.1):
+    - Realm/Headers (= 4.4.1)
+  - Realm/Headers (4.4.1)
+  - RealmSwift (4.4.1):
+    - Realm (= 4.4.1)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireObjectMapper (~> 5.2)
+  - DZNEmptyDataSet
+  - JGProgressHUD
+  - Nuke (~> 8.0)
+  - RealmSwift
+  - Toast-Swift (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireObjectMapper
+    - DZNEmptyDataSet
+    - JGProgressHUD
+    - Nuke
+    - ObjectMapper
+    - Realm
+    - RealmSwift
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
+  ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
+  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
+  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: a2a84aa4f758dc1ac0936430eacb585cd3734c2d
+
+COCOAPODS: 1.9.1
