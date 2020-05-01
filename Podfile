@@ -11,5 +11,6 @@ target 'iTunesCat' do
   pod 'Nuke', '~> 8.0'
   pod 'JGProgressHUD'
   pod 'DZNEmptyDataSet'
+  pod 'RealmSwift'
 
 end
